@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞彩导航 · 再次遇见 · 知识收藏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f9fafb;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 2rem 1.25rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 720px;
+            width: 100%;
+        }
+
+        /* 头部 — 再次问候 */
+        .hero {
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 1.75rem;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.015em;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 0.95rem;
+            color: #64748b;
+            border-left: 3px solid #94a3b8;
+            padding-left: 1rem;
+            margin-top: 0.4rem;
+        }
+
+        .hero .sub span {
+            background: #ecfdf5;
+            color: #065f46;
+            padding: 0.15rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 0.3rem;
+        }
+
+        /* 说明区 — 为什么再次回来 */
+        .explain {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.8rem 1.8rem 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 4px 12px rgba(0,0,0,0.02);
+            margin-bottom: 2rem;
+        }
+
+        .explain h2 {
+            font-weight: 450;
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .explain h2::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 1.1rem;
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+
+        .explain p {
+            margin-bottom: 0.9rem;
+            font-size: 0.98rem;
+            color: #334155;
+        }
+
+        .explain p:last-child {
+            margin-bottom: 0;
+        }
+
+        .explain a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #94a3b8;
+            transition: border 0.2s, color 0.2s;
+        }
+
+        .explain a:hover {
+            color: #1d4ed8;
+            border-bottom: 1px solid #2563eb;
+        }
+
+        /* 提示区 — 收藏与持续关注 */
+        .reminder {
+            background: #f1f5f9;
+            border-radius: 16px;
+            padding: 1.5rem 1.8rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #475569;
+        }
+
+        .reminder h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .reminder ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .reminder li {
+            font-size: 0.95rem;
+            padding-left: 1.2rem;
+            position: relative;
+            color: #334155;
+        }
+
+        .reminder li::before {
+            content: "·";
+            position: absolute;
+            left: 0.1rem;
+            font-weight: 700;
+            color: #475569;
+        }
+
+        .reminder .tag {
+            background: #e2e8f0;
+            padding: 0.15rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #1e293b;
+            margin-left: 0.3rem;
+        }
+
+        /* 卡片式相关信息区 */
+        .info-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.3rem 1.5rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+            border: 1px solid #f1f5f9;
+            transition: box-shadow 0.2s;
+        }
+
+        .info-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .info-card h4 {
+            font-weight: 500;
+            font-size: 1rem;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+            letter-spacing: 0.01em;
+        }
+
+        .info-card p {
+            font-size: 0.92rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .info-card .meta {
+            display: inline-block;
+            font-size: 0.7rem;
+            background: #eef2ff;
+            color: #4338ca;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+            margin-top: 0.25rem;
+        }
+
+        /* FAQ 摘要 — 轻量问答 */
+        .faq-mini {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.5rem 1.8rem;
+            margin-bottom: 2.2rem;
+            border: 1px solid #e9eef3;
+        }
+
+        .faq-mini h3 {
+            font-weight: 450;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .faq-item {
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #1e293b;
+            font-size: 0.92rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-a {
+            font-size: 0.89rem;
+            color: #475569;
+            padding-left: 0.3rem;
+        }
+
+        /* 页脚 + 再次访问入口 */
+        .footer-note {
+            font-size: 0.85rem;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1.5rem;
+            margin-top: 0.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-note a {
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: 450;
+            background: #f1f5f9;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            transition: background 0.2s, color 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .footer-note a:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+            border-color: #cbd5e1;
+        }
+
+        .footer-note .muted {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1.2rem 0.9rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .explain {
+                padding: 1.4rem;
+            }
+            .reminder {
+                padding: 1.2rem;
+            }
+            .info-card {
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- hero 再次问候 -->
+        <div class="hero">
+            <h1>再次遇见 · 知识收藏</h1>
+            <div class="sub">
+                一个持续更新的索引 <span>新朋友 · 老朋友</span>
+            </div>
+        </div>
+
+        <!-- 说明区 —— 为什么再次回来 & 如何收藏 -->
+        <div class="explain">
+            <h2>说明</h2>
+            <p>
+                有些人习惯把好用的站点放在浏览器的书签栏，也有些人在笔记里记下链接，方便随时回访。
+                如果你此前已经留意过<a href="https://wapjingcai.com">竞彩网</a>，这一页可以当作一个轻量的目录入口 —— 帮助你快速回忆它的定位、信息构成以及适合哪些场景。
+            </p>
+            <p>
+                对于第一次接触的朋友，这里没有复杂的引导，只有一份安静的知识库索引。你可以把当前页面收藏到浏览器或笔记工具，以便下次继续探索。将<a href="https://wapjingcai.com">竞彩网</a>加入书签时，建议重命名为容易记忆的标签。
+            </p>
+            <p>
+                持续关注意味着定期回来看看内容是否更新，或者把链接分享给有同样兴趣的人。一个被收藏的站点，往往比临时搜索更可靠。
+            </p>
+        </div>
+
+        <!-- 提示区 —— 收藏与关注 -->
+        <div class="reminder">
+            <h3>📌 提示 · 持续关注的几个方法</h3>
+            <ul>
+                <li>浏览器书签栏 — 直接拖拽当前页到书签栏，或使用快捷键 <span class="tag">Ctrl+D</span></li>
+                <li>笔记应用 — 把链接和简短描述保存在 Notion、Obsidian、备忘录等工具</li>
+                <li>定期回访 — 设置一个温和的提醒（比如每月初）重新打开<a href="https://wapjingcai.com">竞彩网</a>，了解是否有新的内容调整</li>
+                <li>分享给朋友 — 真诚的推荐往往比收藏夹更持久</li>
+            </ul>
+        </div>
+
+        <!-- 相关信息区（卡片） -->
+        <div class="info-grid">
+            <div class="info-card">
+                <h4>站点类型</h4>
+                <p>以信息展示与查询为主的轻量平台，界面适配移动端，适合快速浏览。</p>
+                <span class="meta">移动优先</span>
+            </div>
+            <div class="info-card">
+                <h4>常见使用场景</h4>
+                <p>日常查看最新资讯、数据参考、以及作为知识库的补充来源。建议搭配其他信源交叉验证。</p>
+                <span class="meta">信息参考</span>
+            </div>
+            <div class="info-card">
+                <h4>内容节奏</h4>
+                <p>内容更新频率属于中等，不需要每天紧盯，适合间隔一段时间集中查阅。保持长期关注即可。</p>
+                <span class="meta">平稳更新</span>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要 —— 轻问答 -->
+        <div class="faq-mini">
+            <h3>常见想法 · 简短回答</h3>
+            <div class="faq-item">
+                <div class="faq-q">「这个网站适合每天打开吗？」</div>
+                <div class="faq-a">不必每天打开，可以纳入你的周/月信息检阅清单。过频访问反而容易产生信息疲劳。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">「如何最快找到最新内容？」</div>
+                <div class="faq-a">直接访问<a href="https://wapjingcai.com">竞彩网</a>，留意首页顶部或最近更新板块。部分浏览器支持订阅页面变动（需手动设置）。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">「和其他类似站点比有什么不同？」</div>
+                <div class="faq-a">它的界面更克制，没有过多跳转和弹窗，信息层级清晰。适合作为参照系之一。</div>
+            </div>
+        </div>
+
+        <!-- 底部 + 自然链接 -->
+        <div class="footer-note">
+            <span class="muted">持续关注 · 保持好奇</span>
+            <a href="https://wapjingcai.com">竞彩网</a>
+        </div>
+
+        <!-- 微版权 —— 非必要但完整 -->
+        <div style="margin-top: 1.8rem; font-size: 0.75rem; color: #94a3b8; text-align: center; border-top: 1px solid #f1f5f9; padding-top: 1.2rem;">
+            知识库入口 · 温和导航
+        </div>
+    </div>
+</body>
+</html>
