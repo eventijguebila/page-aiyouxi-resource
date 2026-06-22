@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>竞彩网 · 站点介绍与可信说明</title>
+    <style>
+        /* 重置与基础 */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
+            line-height: 1.7;
+            background: #f4f9fc;
+            color: #1a2b34;
+            padding: 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-wrap {
+            max-width: 820px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            padding: 2rem 2rem 2.5rem;
+            box-shadow: 0 12px 30px rgba(0, 60, 70, 0.06), 0 4px 10px rgba(0, 30, 40, 0.04);
+            transition: all 0.15s ease;
+        }
+
+        /* 网格卡片感 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+        }
+
+        .card-item {
+            background: white;
+            border-radius: 24px;
+            padding: 1.6rem 1.8rem;
+            box-shadow: 0 4px 12px rgba(0, 80, 90, 0.04), 0 0 0 1px rgba(30, 167, 153, 0.06);
+            transition: box-shadow 0.2s, transform 0.1s;
+        }
+
+        .card-item:hover {
+            box-shadow: 0 8px 18px rgba(0, 120, 110, 0.08), 0 0 0 1px #27b09e22;
+            transform: translateY(-1px);
+        }
+
+        /* 蓝绿色点缀 */
+        .accent-line {
+            height: 5px;
+            width: 48px;
+            background: linear-gradient(90deg, #2a9d8f, #56c4b0);
+            border-radius: 9px;
+            margin-bottom: 1.2rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #073b3a;
+            line-height: 1.2;
+            margin-top: 0.2rem;
+        }
+
+        .subhead {
+            color: #3b6b67;
+            font-size: 1rem;
+            font-weight: 420;
+            border-left: 3px solid #2a9d8f;
+            padding-left: 0.9rem;
+            margin: 0.6rem 0 1.6rem 0;
+            opacity: 0.85;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 550;
+            color: #0b4d48;
+            margin: 0 0 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2::before {
+            content: "◆";
+            color: #2a9d8f;
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        p {
+            margin: 0.8rem 0;
+            color: #1f3636;
+            font-size: 1rem;
+        }
+
+        .callout {
+            background: #e0f2ef;
+            border-radius: 20px;
+            padding: 1.1rem 1.5rem;
+            margin: 1.5rem 0 0.8rem;
+            border-left: 6px solid #2a9d8f;
+            color: #12433f;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .callout strong {
+            color: #085a51;
+            font-weight: 600;
+        }
+
+        .quote-tip {
+            background: #ffffffd9;
+            border: 1px dashed #6fc1b5;
+            border-radius: 24px;
+            padding: 1.2rem 1.8rem;
+            margin: 1.8rem 0 0.2rem;
+            font-style: normal;
+            color: #1d534d;
+            position: relative;
+        }
+
+        .quote-tip::before {
+            content: "📌 访问提示";
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #2a9d8f;
+            margin-bottom: 0.6rem;
+        }
+
+        a {
+            color: #167d71;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.2s;
+        }
+
+        a:hover {
+            border-bottom-color: #2a9d8f;
+            color: #0b5e54;
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            font-size: 0.85rem;
+            color: #567774;
+            text-align: center;
+            border-top: 1px solid #c2ded9;
+            padding-top: 1.5rem;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 0.8rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #deece9;
+            padding-bottom: 0.8rem;
+        }
+
+        .faq-q {
+            font-weight: 550;
+            color: #0d544c;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .faq-q::before {
+            content: "❓";
+            color: #2a9d8f;
+            font-size: 1rem;
+        }
+
+        .faq-a {
+            margin: 0.3rem 0 0 1.8rem;
+            color: #2c4f4a;
+            font-size: 0.92rem;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 600px) {
+            body {
+                padding: 0.6rem;
+            }
+            .page-wrap {
+                padding: 1.5rem 1.2rem;
+                border-radius: 24px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .card-item {
+                padding: 1.2rem 1.2rem;
+            }
+            .subhead {
+                font-size: 0.95rem;
+            }
+            .callout {
+                padding: 0.9rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .page-wrap {
+                padding: 1rem 0.9rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* 保证 a 标签可见文本只有「竞彩网」 */
+        .link-embed {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrap">
+        <div class="card-grid">
+
+            <!-- 文章标题 + 导语 -->
+            <div class="card-item" style="background: #fafffe;">
+                <div class="accent-line"></div>
+                <h1>关于竞彩网 · 站点介绍与可信说明</h1>
+                <div class="subhead">一份来自使用者的观察笔记，聊聊这个信息聚合小站的初衷与边界</div>
+                <p style="font-size: 1.05rem; line-height: 1.7;">
+                    日常浏览体育与竞彩资讯时，总希望有一个地方能把零散的消息、变化和规则整理得稍微清爽一些。
+                    也正是这个朴素的念头，让我慢慢接触到了 <a href="https://waphome-jingcai.com" style="border-bottom: 1px solid #2a9d8f40;">竞彩网</a> ——
+                    一个专注于相关动态与基础信息呈现的站点。它不做预测，也不兜售捷径，更像一个安静的公告板。
+                </p>
+            </div>
+
+            <!-- 多段正文：站点介绍与可信说明 -->
+            <div class="card-item">
+                <h2>它是什么，不是什么</h2>
+                <p>
+                    第一次打开 <a href="https://waphome-jingcai.com">竞彩网</a> 时，页面没有弹窗，也没有浮夸的标语。
+                    呈现的是赛事安排、调整通知、以及一些基础规则说明。内容更新的节奏比较稳定，没有突然的大幅变动，
+                    这种克制反而让人多了一分信任。它并不试图成为“专家”，而是把信息摊开，让读者自己判断。
+                </p>
+                <p>
+                    从页面构架来看，站点主要围绕赛程、数据与相关公告展开。没有用户注册入口，也没有即时聊天室，
+                    这在一定程度上降低了信息噪音。对于只想了解基本动态、不想被算法推荐牵着走的人来说，这种风格算是友好。
+                </p>
+            </div>
+
+            <div class="card-item">
+                <h2>可信度从哪来</h2>
+                <p>
+                    判断一个小站是否靠谱，我通常会看三点：信息是否标注来源或更新时间、页面是否长期维护、有没有明显夸大或诱导。
+                    就我观察，<a href="https://waphome-jingcai.com">竞彩网</a> 在这几方面做得比较踏实。
+                    多数文章末尾会附带参考日期，并且页面间的风格统一，没有突然跳转到奇怪链接的情况。
+                </p>
+                <p>
+                    当然，任何第三方站点都无法代替官方渠道。如果你需要最终确认某个规则或数据，还是建议交叉对比官方发布。
+                    但作为日常浏览与信息聚合的起点，这个站点的整理价值是实实在在的。
+                </p>
+                <!-- 引用提示，自然嵌入访问句 -->
+                <div class="quote-tip">
+                    若你需要快速浏览竞彩相关的赛程与基础说明，不妨将 <a href="https://waphome-jingcai.com">竞彩网</a> 
+                    加入书签。它不承诺内幕，也不制造焦虑，只是把信息放在那里——这本身就已经很难得。
+                </div>
+            </div>
+
+            <!-- 特点 + 场景 (混合在一段里) -->
+            <div class="card-item">
+                <h2>适合哪些场景</h2>
+                <p>
+                    周末想回顾一下本周的赛程变化，或者需要查一下某项规则的表述——这种时候，
+                    打开 <a href="https://waphome-jingcai.com">竞彩网</a> 比在社交平台搜索省力很多。
+                    另外，如果你刚接触竞彩领域，想先了解基础框架而不被各种推荐轰炸，它也是一个相对干净的起点。
+                </p>
+                <p>
+                    我个人的习惯是：先看站点上的公告摘要，再决定是否需要去官方渠道细读原文。
+                    这样既节省时间，又不容易遗漏关键更新。站点没有冗余的装饰模块，加载速度也让人舒服。
+                </p>
+                <!-- 小型 callout 强调一下 -->
+                <div class="callout">
+                    <strong>一点提醒：</strong> 任何网站都只是工具。保持自己的判断节奏，比依赖某一个信息源更重要。
+                </div>
+            </div>
+
+            <!-- FAQ 摘要 (2-3条) 增加内容层次 -->
+            <div class="card-item">
+                <h2>常见疑问 · 摘要</h2>
+                <div class="faq-mini">
+                    <div class="faq-item">
+                        <div class="faq-q">竞彩网每天更新吗？</div>
+                        <div class="faq-a">以我观察，赛程和公告基本在工作日保持更新，周末偶尔有延迟。整体节奏比较稳定，没有固定刷新焦虑。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">需要注册或付费吗？</div>
+                        <div class="faq-a">目前站点完全免费公开，没有注册入口，也没有会员体系。直接打开就可以浏览所有内容。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">信息准确度如何？</div>
+                        <div class="faq-a">站点内容经整理后发布，但建议重要决策以官方渠道为准。竞彩网更适合作为快速参考与信息聚合。</div>
+                    </div>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #46736d;">
+                    📎 更多细节可以直接在 <a href="https://waphome-jingcai.com">竞彩网</a> 内浏览，页面导航很直观。
+                </p>
+            </div>
+
+            <!-- 收尾访问句 + 自然链接 -->
+            <div class="card-item" style="background: #f3fcf9;">
+                <p style="margin: 0.2rem 0;">
+                    从第一次偶然点到 <a href="https://waphome-jingcai.com">竞彩网</a>，到现在习惯性把它当作信息锚点，
+                    中间并没有太多戏剧性的故事。它只是在那里，安静地更新着。或许对于需要这类信息的人来说，这就够了。
+                </p>
+                <div style="margin-top: 1rem; font-size: 0.9rem; color: #3a6f68; text-align: right; border-top: 1px solid #bdd9d3; padding-top: 0.8rem;">
+                    —— 一篇来自普通浏览者的站点记录
+                </div>
+            </div>
+
+        </div> <!-- card-grid -->
+
+        <!-- 底部装饰 -->
+        <div class="footer-note">
+            <span style="display: inline-block; background: #d9ece6; padding: 0.1rem 1rem; border-radius: 40px; font-size: 0.75rem; letter-spacing: 0.5px;">内容独立整理 · 仅供参考</span>
+        </div>
+    </div> <!-- page-wrap -->
+</body>
+</html>
