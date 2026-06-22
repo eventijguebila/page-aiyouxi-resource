@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>信息索引 · 竞彩网</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f2f4f5;
+            color: #1f2a3a;
+            line-height: 1.6;
+            padding: 1.5rem 1rem 3rem;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 开场 hero – 轻柔留白 */
+        .hero {
+            margin: 1.2rem 0 2.2rem;
+            text-align: center;
+            padding: 1.2rem 0.5rem 0.8rem;
+        }
+        .hero .opener {
+            font-size: 1.9rem;
+            font-weight: 350;
+            letter-spacing: 0.02em;
+            color: #2b3c4f;
+            line-height: 1.3;
+        }
+        .hero .opener::before {
+            content: "“";
+            color: #9aaec2;
+            font-size: 2.4rem;
+            margin-right: 0.15rem;
+            vertical-align: middle;
+        }
+        .hero .opener::after {
+            content: "”";
+            color: #9aaec2;
+            font-size: 2.4rem;
+            margin-left: 0.15rem;
+            vertical-align: middle;
+        }
+        .hero .sub {
+            margin-top: 0.6rem;
+            font-size: 0.95rem;
+            color: #60758b;
+            font-weight: 330;
+        }
+
+        /* 卡片通用 */
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03), 0 6px 14px -4px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e6eaef;
+            padding: 1.8rem 1.6rem;
+            margin-bottom: 1.8rem;
+            transition: box-shadow 0.15s;
+        }
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 10, 20, 0.04), 0 10px 20px -6px rgba(0, 0, 0, 0.03);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 460;
+            color: #1c2b3a;
+            margin-bottom: 1rem;
+            letter-spacing: 0.01em;
+            border-left: 3px solid #b8cadf;
+            padding-left: 0.75rem;
+        }
+
+        .card-text {
+            font-size: 0.98rem;
+            color: #2e4154;
+        }
+        .card-text p {
+            margin-bottom: 0.85rem;
+        }
+        .card-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 特点列表 – 温和点阵 */
+        .feature-list {
+            list-style: none;
+            margin: 0.5rem 0 0.2rem;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 0.5rem 0 0.5rem 1.6rem;
+            position: relative;
+            font-size: 0.97rem;
+            border-bottom: 1px solid #f0f2f6;
+            color: #284056;
+        }
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        .feature-list li::before {
+            content: "·";
+            position: absolute;
+            left: 0.4rem;
+            color: #7c98b3;
+            font-weight: 700;
+            font-size: 1.3rem;
+            top: -0.05rem;
+        }
+
+        /* 链接样式 */
+        a {
+            color: #2f5a7a;
+            text-decoration: none;
+            border-bottom: 1px solid #cfdae6;
+            padding-bottom: 1px;
+            transition: border-color 0.1s, color 0.1s;
+        }
+        a:hover {
+            color: #173b57;
+            border-bottom-color: #173b57;
+        }
+        .link-card {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e6eaef;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+            padding: 1.1rem 1.6rem;
+            margin-bottom: 1.8rem;
+            text-align: center;
+            font-size: 1.05rem;
+        }
+
+        .faq-summary {
+            background: #fafbfc;
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            margin-top: 1rem;
+            border: 1px solid #eef2f6;
+        }
+        .faq-summary summary {
+            cursor: default;
+            font-weight: 430;
+            color: #304a60;
+            padding: 0.2rem 0;
+            font-size: 0.96rem;
+        }
+        .faq-summary p {
+            font-size: 0.92rem;
+            color: #46607a;
+            margin: 0.5rem 0 0.2rem;
+            line-height: 1.5;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e2e7ed;
+            margin: 1.6rem 0 1.2rem;
+            width: 40%;
+            margin-left: 0;
+        }
+
+        /* 响应式 */
+        @media (max-width: 560px) {
+            body {
+                padding: 0.8rem 0.7rem 2.5rem;
+            }
+            .card {
+                padding: 1.4rem 1rem;
+            }
+            .hero .opener {
+                font-size: 1.6rem;
+            }
+            .link-card {
+                padding: 0.9rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 开场短句 hero -->
+    <div class="hero">
+        <div class="opener">整理，是为了更好地发现</div>
+        <div class="sub">从零散信息到可用索引 · 一份安静的阅读笔记</div>
+    </div>
+
+    <!-- 承接段落 – 资料整理视角 -->
+    <div class="card">
+        <div class="card-title">关于信息整理</div>
+        <div class="card-text">
+            <p>每天都有海量的赛事数据、历史记录和动态分析在网络中流动。对于习惯先收集、再筛选的人来说，一个清晰的资料起点，往往比直接获取结论更重要。</p>
+            <p>过去一年，我尝试把分散在不同渠道的竞彩相关内容——规则说明、数据口径、术语对照——汇总到一个相对安静的地方。这个过程很像整理书架：不需要每本书都打开，但知道它们按什么顺序排列、在哪里能找到。</p>
+            <p>这个页面的意义也在于此：作为一份轻量的资料索引，把经过梳理的信息入口分享给有同样整理习惯的人。</p>
+        </div>
+    </div>
+
+    <!-- 特点列表 – 结构化的阅读节点 -->
+    <div class="card">
+        <div class="card-title">这份索引的特点</div>
+        <ul class="feature-list">
+            <li><strong>条目式导航</strong> – 将常见概念、规则要点、历史数据拆成独立短篇，方便按需查阅。</li>
+            <li><strong>口径统一</strong> – 对同一术语（如“让球”、“SP值”）尽量采用一致的表述，减少理解歧义。</li>
+            <li><strong>版本留痕</strong> – 每次规则或数据口径调整，都会在对应页面注明更新日期，适合回溯。</li>
+            <li><strong>无广告干扰</strong> – 页面保持克制排版，没有弹窗或浮层，可以安心浏览文字。</li>
+            <li><strong>开放书签</strong> – 所有内容都在一个域名下，便于收藏和跨设备同步。</li>
+        </ul>
+    </div>
+
+    <!-- 场景 + 自然嵌入链接 -->
+    <div class="card">
+        <div class="card-title">什么样的场景会用到它</div>
+        <div class="card-text">
+            <p>如果你在整理自己的比赛记录，需要核对某个联赛的让球规则；或者你想了解某个术语的官方定义，却不想在多个网站之间反复跳转——这个索引也许能节省一些时间。</p>
+            <p>举个例子：当你想确认“半全场”的结算逻辑，或者回顾某个赛季的积分算法，可以直接在 <a href="https://wapchina-jingcai.com">竞彩网</a> 的固定栏目下找到对应说明。不需要注册，也不强制登录。</p>
+            <p>另外，如果你习惯在周末花一点时间复盘数据，这里提供的分段式信息也比长篇通读更符合碎片阅读的节奏。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 / 温和提示 -->
+    <div class="card">
+        <div class="card-title">一些常见疑问</div>
+        <div class="faq-summary">
+            <details>
+                <summary>这里的资料和官方有什么区别？</summary>
+                <p>内容基于公开资料整理，并补充了索引和注释，方便横向对比。但涉及具体开奖结果、实时赔率，请以官方发布为准。</p>
+            </details>
+            <details>
+                <summary>页面多久更新一次？</summary>
+                <p>主要规则和术语部分会跟随行业变动不定期修订；历史数据类内容按赛季或年度归档，更新频率较低。</p>
+            </details>
+            <details>
+                <summary>可以转载或分享吗？</summary>
+                <p>欢迎非商业用途的参考引用，转载时建议保留原文链接，方便其他人溯源。</p>
+            </details>
+            <p style="margin-top: 0.8rem; font-size: 0.9rem; color: #546e86;">* 如果你有更具体的整理需求，也可以通过站内页面找到联系反馈入口。</p>
+        </div>
+    </div>
+
+    <!-- 温和结尾 + 明确链接 (无“进入/点击”等词汇) -->
+    <div class="link-card">
+        <p style="margin-bottom: 0.25rem; font-size: 1rem; color: #304a60;">从整理开始，慢慢搭建自己的信息结构。</p>
+        <p style="margin: 0.4rem 0 0.1rem;"><a href="https://wapchina-jingcai.com">竞彩网</a> — 资料索引 · 静读专用</p>
+    </div>
+
+    <!-- 极简 footer 呼应柔和调性 -->
+    <div style="text-align: center; font-size: 0.8rem; color: #859cab; margin-top: 1.6rem; letter-spacing: 0.3px;">
+        <span style="display: inline-block; border-top: 1px solid #dce3ea; padding-top: 0.9rem; width: 70%;">索引内容仅供个人参考 · 请保持独立判断</span>
+    </div>
+</div>
+</body>
+</html>
